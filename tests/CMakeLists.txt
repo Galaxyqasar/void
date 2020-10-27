@@ -1,3 +1,5 @@
+enable_testing()
+
 file(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
 foreach(child ${children})
 	if(${child} MATCHES "test_.+\.cpp")
