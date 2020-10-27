@@ -1,0 +1,1 @@
+target_include_directories(voidcore PRIVATE ${CMAKE_SOURCE_DIR}/include/rtasm)
