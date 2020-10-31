@@ -6,7 +6,7 @@
 #include "ins/stack.hpp"
 
 namespace rtasm {
-	struct VirtualAssembler : Base {
+	struct VirtualAssembler : Base, Mov, Stack {
 		inline void bind(Label &label) {
 			Base::bind(label);
 		}

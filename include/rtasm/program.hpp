@@ -62,6 +62,10 @@ namespace rtasm {
 			return m_data + offset;
 		}
 
+		inline std::vector<uint8_t> copy() {
+			return std::vector<uint8_t>(m_data, m_data + m_size);
+		}
+
 		static inline size_t pageSize() {
 			return sysconf(_SC_PAGE_SIZE);
 		}

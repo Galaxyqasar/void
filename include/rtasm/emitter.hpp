@@ -51,6 +51,18 @@ namespace rtasm {
 			}
 		}
 
+		template<typename reg_t>
+		void emit(disp8<reg_t> disp) {
+			emit(disp.displacement);
+		}
+
+		template<typename reg_t>
+		void emit(disp32<reg_t> disp) {
+			for(uint8_t byte : byte_cast(disp.displacement)) {
+				emit(byte);
+			}
+		}
+
 		template<typename T>
 		void emit(const T &val) {
 			emit(static_cast<uint8_t>(val));
