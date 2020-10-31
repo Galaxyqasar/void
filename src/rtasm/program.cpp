@@ -3,15 +3,13 @@
 #include <stdexcept>
 
 #include <cstring>
-#include <unistd.h>
 #include <sys/mman.h>
 
 namespace rtasm {
 	void Program::map(const uint8_t *data, size_t size) {
 		unmap();
-		static const size_t pageSize = sysconf(_SC_PAGE_SIZE);
-		size_t pages = size / pageSize + (size % pageSize > 0);
-		m_size = pageSize * pages;
+		size_t pages = size / pageSize() + (size % pageSize() > 0);
+		m_size = pageSize() * pages;
 
 		if(m_size > 0) {
 			m_data = (uint8_t*)mmap(nullptr, size, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_PRIVATE | MAP_ANONYMOUS ,-1, 0);

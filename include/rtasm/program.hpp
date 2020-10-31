@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include <fstream>
+#include <unistd.h>
 
 template <typename T> class funcptr_t;
 template<typename R, typename... Args>
@@ -59,6 +60,10 @@ namespace rtasm {
 		template<typename F>
 		funcptr_t<F> get(intptr_t offset = 0) {
 			return m_data + offset;
+		}
+
+		static inline size_t pageSize() {
+			return sysconf(_SC_PAGE_SIZE);
 		}
 
 	private:
