@@ -4,7 +4,6 @@
 #include <unordered_map>
 #include <vector>
 #include <fstream>
-#include <unistd.h>
 
 template <typename T> class funcptr_t;
 template<typename R, typename... Args>
@@ -66,9 +65,7 @@ namespace voidcore {
 			return std::vector<uint8_t>(m_data, m_data + m_size);
 		}
 
-		static inline size_t pageSize() {
-			return sysconf(_SC_PAGE_SIZE);
-		}
+		static size_t pageSize();
 
 	private:
 		uint8_t *m_data = nullptr;

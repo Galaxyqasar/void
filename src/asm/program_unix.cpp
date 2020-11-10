@@ -3,9 +3,13 @@
 #include <stdexcept>
 
 #include <cstring>
+#include <unistd.h>
 #include <sys/mman.h>
 
 namespace voidcore {
+	size_t Program::pageSize() {
+		return sysconf(_SC_PAGE_SIZE);
+	}
 	void Program::map(const uint8_t *data, size_t size) {
 		unmap();
 		size_t pages = size / pageSize() + (size % pageSize() > 0);
