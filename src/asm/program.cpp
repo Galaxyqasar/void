@@ -5,7 +5,7 @@
 #include <cstring>
 #include <sys/mman.h>
 
-namespace rtasm {
+namespace voidcore {
 	void Program::map(const uint8_t *data, size_t size) {
 		unmap();
 		size_t pages = size / pageSize() + (size % pageSize() > 0);

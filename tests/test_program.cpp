@@ -1,16 +1,18 @@
-#include "rtasm/program.hpp"
+#include "asm/program.hpp"
 
 #include <iostream>
 #include <cassert>
 #include <csignal>
 #include <csetjmp>
 
+using namespace voidcore;
+
 void test_emptyProgram() {
-	rtasm::Program prog;
+	Program prog;
 }
 
 void test_initProgram() {
-	rtasm::Program prog(std::vector<uint8_t>({0, 1, 2, 3, 4}));
+	Program prog(std::vector<uint8_t>({0, 1, 2, 3, 4}));
 	// prog.size() is a multiple of the os page size, but should be at least as large as our data
 	assert(prog.size() >= 5);
 	assert(prog.data()[0] == 0);
@@ -18,7 +20,7 @@ void test_initProgram() {
 }
 
 void test_reinitProgram() {
-	rtasm::Program prog(std::vector<uint8_t>({0, 1, 2, 3, 4}));
+	Program prog(std::vector<uint8_t>({0, 1, 2, 3, 4}));
 	prog = std::vector<uint8_t>({5, 4, 3, 2, 1, 0});
 	// prog.size() is a multiple of the os page size, but should be at least as large as our data
 	assert(prog.size() >= 6);
@@ -31,7 +33,7 @@ void test_funcRetVoid() {
 		0xc3	// ret
 	};
 
-	rtasm::Program prog(code);
+	Program prog(code);
 	funcptr_t<void()> func = prog.get<void()>();
 
 	// function shouldn't be a nullptr
@@ -47,7 +49,7 @@ void test_funcRetInt() {
 		0xc3	// ret
 	};
 
-	rtasm::Program prog(code);
+	Program prog(code);
 	funcptr_t<int()> func = prog.get<int()>();
 
 	// function shouldn't be a nullptr
@@ -65,7 +67,7 @@ void test_multipleFunctions() {
 		0xc3	// ret
 	};
 
-	rtasm::Program prog(code);
+	Program prog(code);
 	funcptr_t<int()> func1 = prog.get<int()>(0);	// function at offset 0
 	funcptr_t<int()> func2 = prog.get<int()>(6);	// function at offset 6
 
@@ -85,8 +87,8 @@ void test_copyProgram() {
 		0xc3	// ret
 	};
 
-	rtasm::Program original(code);
-	rtasm::Program copy = original;	// copy-constructor
+	Program original(code);
+	Program copy = original;	// copy-constructor
 	funcptr_t<int()> func1 = copy.get<int()>(0);	// function at offset 0
 	funcptr_t<int()> func2 = copy.get<int()>(6);	// function at offset 6
 
@@ -97,7 +99,7 @@ void test_copyProgram() {
 	assert(func1() == 0x2a);
 	assert(func2() == 0x4c);
 
-	rtasm::Program copy2;
+	Program copy2;
 	copy2 = original;	// assignment operator
 	funcptr_t<int()> func3 = copy2.get<int()>(0);	// function at offset 0
 	funcptr_t<int()> func4 = copy2.get<int()>(6);	// function at offset 6
@@ -115,7 +117,7 @@ void test_copyProgram() {
 sigjmp_buf segfaultloc;
 void test_memoryProtection() {
 	std::vector<uint8_t> code(512, 0);
-	rtasm::Program prog(code);
+	Program prog(code);
 
 	// const_cast to write, this should not be done in production code and is only for security testing here
 	uint8_t *data = const_cast<uint8_t*>(prog.data());

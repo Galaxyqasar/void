@@ -3,7 +3,7 @@
 #include "../emitter.hpp"
 #include "../x86-64.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	struct Mov : Emitter {
 		// move register to other register
 		void mov(reg8 dst, reg8 src);

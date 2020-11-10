@@ -1,6 +1,6 @@
 #include "ins/mov.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	// move register to other register
 	void Mov::mov(reg8 dst, reg8 src) {
 		emit(rex::calc(dst, src), 0x88, modrm::calc(dst, src));

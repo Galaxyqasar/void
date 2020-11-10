@@ -16,7 +16,7 @@ static std::array<uint8_t, sizeof(T)> byte_cast(const T &val) {
 	return converter.out;
 }
 
-namespace rtasm {
+namespace voidcore {
 	struct Emitter {
 		inline void bind(Label &label) {
 			label.dst = nextAddr();
@@ -37,10 +37,10 @@ namespace rtasm {
 			}
 		}
 
-		inline void emit(Label &label) {
+		inline void emit(Label *label) {
 			intptr_t loc = nextAddr();
-			label.uses.push_back(loc);
-			uint32_t offset = label.dst - loc - sizeof(uint32_t);
+			label->uses.push_back(loc);
+			int32_t offset = label->dst - loc - sizeof(uint32_t);
 			emit(imm32(offset));
 		}
 
@@ -64,18 +64,18 @@ namespace rtasm {
 		}
 
 		template<typename T>
-		void emit(const T &val) {
+		void emit(T val) {
 			emit(static_cast<uint8_t>(val));
 		}
-
+/*
 		template<typename ...Args>
 		void emit(Label &label, Args ...args) {
 			emit(label);
 			emit(args...);
 		}
-
+*/
 		template<typename T, typename ...Args>
-		void emit(const T &val, Args ...args) {
+		void emit(T val, Args ...args) {
 			emit(val);
 			emit(args...);
 		}

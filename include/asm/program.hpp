@@ -24,7 +24,7 @@ private:
 	R (*f)(Args...);
 };
 
-namespace rtasm {
+namespace voidcore {
 	class Program {
 	public:
 		inline Program(const std::vector<uint8_t> &code = {}) {

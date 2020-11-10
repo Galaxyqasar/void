@@ -1,6 +1,6 @@
-#include "rtasm.hpp"
+#include "assembler.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	intptr_t Assembler::nextAddr() {
 		return buffer.size();
 	}

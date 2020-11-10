@@ -4,7 +4,7 @@
 
 #include "value.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	struct modrm {
 		inline modrm(uint8_t value = 0) : m_value(value) {}
 		inline modrm(const modrm &other) : m_value(other.m_value) {}

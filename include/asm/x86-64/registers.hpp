@@ -1,6 +1,7 @@
 #pragma once
 
-namespace rtasm {
+namespace voidcore {
+/* // this doesn't work (enums are converted to uints and become indistinguishable)
 	struct reg8 {
 		enum {
 			al, cl, dl, bl, ah, ch, dh, bh,
@@ -81,7 +82,6 @@ namespace rtasm {
 	private:
 		uint8_t m_value;
 	};
-
 	struct reg64 {
 		enum {
 			rax, rcx, rdx, rbx,
@@ -108,4 +108,46 @@ namespace rtasm {
 	private:
 		uint8_t m_value;
 	};
+*/
+	enum class reg8 {
+		al, cl, dl, bl, ah, ch, dh, bh,
+		spl = ah, bpl, sil, dil,
+		r8b, r9b, r10b, r11b,
+		r12b, r13b, r14b, r15b
+	};
+	enum class reg16 {
+		ax, cx, dx, bx,
+		sp, bp, si, di,
+		r8w, r9w, r10w, r11w,
+		r12w, r13w, r14w, r15w
+	};
+	enum class reg32 {
+		eax, ecx, edx, ebx,
+		esp, ebp, esi, edi,
+		r8d, r9d, r10d, r11d,
+		r12d, r13d, r14d, r15d
+	};
+	enum class reg64 {
+		rax, rcx, rdx, rbx,
+		rsp, rbp, rsi, rdi,
+		r8 , r9 , r10, r11,
+		r12, r13, r14, r15
+	};
+
+
+	inline uint8_t operator&(const reg8  &rvalue, const uint8_t &lvalue) {
+		return static_cast<uint8_t>(rvalue) & lvalue;
+	}
+
+	inline uint8_t operator&(const reg16 &rvalue, const uint8_t &lvalue) {
+		return static_cast<uint8_t>(rvalue) & lvalue;
+	}
+
+	inline uint8_t operator&(const reg32 &rvalue, const uint8_t &lvalue) {
+		return static_cast<uint8_t>(rvalue) & lvalue;
+	}
+
+	inline uint8_t operator&(const reg64 &rvalue, const uint8_t &lvalue) {
+		return static_cast<uint8_t>(rvalue) & lvalue;
+	}
 }

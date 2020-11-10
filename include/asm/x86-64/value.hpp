@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace rtasm {
+namespace voidcore {
 	template<typename T>
 	struct immval {
 		T v;

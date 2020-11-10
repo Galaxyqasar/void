@@ -1,6 +1,6 @@
 #include "ins/stack.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	void Stack::push(reg64 r) {
 		emit(0x50 + (r & 0x7));
 	}

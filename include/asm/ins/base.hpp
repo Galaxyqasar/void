@@ -3,6 +3,6 @@
 #include "../emitter.hpp"
 #include "../x86-64.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	struct Base : Emitter {};
 }

@@ -4,7 +4,7 @@
 #include <limits>
 #include <vector>
 
-namespace rtasm {
+namespace voidcore {
 	struct Label {
 		std::vector<uint64_t> uses = {};
 		uint64_t dst = std::numeric_limits<uint64_t>::max();

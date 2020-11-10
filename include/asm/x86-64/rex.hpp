@@ -2,7 +2,7 @@
 
 #include "value.hpp"
 
-namespace rtasm {
+namespace voidcore {
 	struct rex {
 		enum {
 			b = 1,

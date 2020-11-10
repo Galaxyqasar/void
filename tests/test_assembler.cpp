@@ -1,10 +1,12 @@
-#include "rtasm/rtasm.hpp"
+#include "asm/assembler.hpp"
 
 #include <cassert>
 
+using namespace voidcore;
+
 void test_empty() {
-	rtasm::Assembler asmc;
-	rtasm::Program prog = asmc.build();
+	Assembler asmc;
+	Program prog = asmc.build();
 	assert(prog.size() == 0);
 	assert(prog.copy() == std::vector<uint8_t>{});
 }
