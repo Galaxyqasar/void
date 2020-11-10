@@ -16,14 +16,18 @@ namespace voidcore {
 		Lexer(std::istream &src);
 		Lexer(const std::string &src);
 
-		void setSource(std::istream &src);
-		void setSource(const std::string &src);
+		void load(std::istream &src);
+		void load(const std::string &src);
 
 		uint32_t next();
 		uint32_t peek();
 		bool accept(uint32_t token);
 		void expect(uint32_t token);
 
+		template<typename T>
+		T get() {
+			return std::get<T>(l);
+		}
 		template<typename T>
 		T literal() {
 			return std::get<T>(l);
@@ -36,7 +40,7 @@ namespace voidcore {
 			literal_t lit = l;
 			p = ptmp;
 			l = ltmp;
-			return lit;
+			return std::get<T>(lit);
 		}
 
 		bool eof();

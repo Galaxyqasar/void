@@ -6,20 +6,20 @@ namespace voidcore {
 	Lexer::Lexer() {}
 
 	Lexer::Lexer(std::istream &src) {
-		setSource(src);
+		load(src);
 	}
 
 	Lexer::Lexer(const std::string &src) {
-		setSource(src);
+		load(src);
 	}
 
-	void Lexer::setSource(std::istream &src) {
+	void Lexer::load(std::istream &src) {
 		this->src = std::string((std::istreambuf_iterator<char>(src)), std::istreambuf_iterator<char>());
 		p = start = this->src.c_str();
 		end = start + this->src.length();
 	}
 
-	void Lexer::setSource(const std::string &src) {
+	void Lexer::load(const std::string &src) {
 		this->src = src;
 		p = start = this->src.c_str();
 		end = start + this->src.length();
@@ -181,8 +181,9 @@ namespace voidcore {
 		return false;
 	}
 	void Lexer::expect(uint32_t token) {
-		if(next() != token) {
-			throw lexerror("unexpected token", getCursorPos());
+		int current = next();
+		if(current != token) {
+			throw lexerror("unexpected token " + tokenMap.at(current) + " expected " + tokenMap.at(token), getCursorPos());
 		}
 	}
 	bool Lexer::eof() {
