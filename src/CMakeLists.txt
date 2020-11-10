@@ -4,3 +4,5 @@ foreach(child ${children})
 		add_subdirectory(${child})
 	endif()
 endforeach()
+
+target_sources(voidcore PRIVATE engine.cpp)
