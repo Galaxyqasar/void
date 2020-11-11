@@ -12,8 +12,8 @@ namespace voidcore {
 		std::string Int8TypeDecl::signature() const {
 			return "int8";
 		}
-		bool Int8TypeDecl::generatesAssembly() const {
-			return false;
+		bool Int8TypeDecl::isInline() const {
+			return true;
 		}
 		size_t Int8TypeDecl::size() const {
 			return 1;
@@ -29,8 +29,8 @@ namespace voidcore {
 		std::string UInt8TypeDecl::signature() const {
 			return "uint8";
 		}
-		bool UInt8TypeDecl::generatesAssembly() const {
-			return false;
+		bool UInt8TypeDecl::isInline() const {
+			return true;
 		}
 		size_t UInt8TypeDecl::size() const {
 			return 1;
@@ -46,8 +46,8 @@ namespace voidcore {
 		std::string Int16TypeDecl::signature() const {
 			return "int16";
 		}
-		bool Int16TypeDecl::generatesAssembly() const {
-			return false;
+		bool Int16TypeDecl::isInline() const {
+			return true;
 		}
 		size_t Int16TypeDecl::size() const {
 			return 2;
@@ -63,8 +63,8 @@ namespace voidcore {
 		std::string UInt16TypeDecl::signature() const {
 			return "uint16";
 		}
-		bool UInt16TypeDecl::generatesAssembly() const {
-			return false;
+		bool UInt16TypeDecl::isInline() const {
+			return true;
 		}
 		size_t UInt16TypeDecl::size() const {
 			return 2;
@@ -80,8 +80,8 @@ namespace voidcore {
 		std::string Int32TypeDecl::signature() const {
 			return "int32";
 		}
-		bool Int32TypeDecl::generatesAssembly() const {
-			return false;
+		bool Int32TypeDecl::isInline() const {
+			return true;
 		}
 		size_t Int32TypeDecl::size() const {
 			return 4;
@@ -96,8 +96,8 @@ namespace voidcore {
 		std::string UInt32TypeDecl::signature() const {
 			return "uint32";
 		}
-		bool UInt32TypeDecl::generatesAssembly() const {
-			return false;
+		bool UInt32TypeDecl::isInline() const {
+			return true;
 		}
 		size_t UInt32TypeDecl::size() const {
 			return 4;
@@ -113,8 +113,8 @@ namespace voidcore {
 		std::string Int64TypeDecl::signature() const {
 			return "int64";
 		}
-		bool Int64TypeDecl::generatesAssembly() const {
-			return false;
+		bool Int64TypeDecl::isInline() const {
+			return true;
 		}
 		size_t Int64TypeDecl::size() const {
 			return 8;
@@ -130,8 +130,8 @@ namespace voidcore {
 		std::string UInt64TypeDecl::signature() const {
 			return "uint64";
 		}
-		bool UInt64TypeDecl::generatesAssembly() const {
-			return false;
+		bool UInt64TypeDecl::isInline() const {
+			return true;
 		}
 		size_t UInt64TypeDecl::size() const {
 			return 8;

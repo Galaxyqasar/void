@@ -25,21 +25,17 @@ namespace voidcore {
 	public:
 		virtual std::string name() const = 0;
 		virtual std::string signature() const = 0;
-		virtual bool generatesAssembly() const = 0;
+		virtual bool isInline() const = 0;
 	};
 
-	class TypeDecl : public Decl {
-	public:
-		virtual size_t size() const = 0;
-	};
+	class TypeDecl;
 
 	class TypeInfo {
 	public:
-		inline TypeInfo(TypeDecl *type, bool isConst = false, bool isStatic = false, size_t ptrCount = 0)
-		: base(type), isConst(isConst), isStatic(isStatic), ptrCount(ptrCount) {}
-		inline TypeInfo(const TypeInfo &other) = default;
-		inline TypeInfo& operator=(const TypeInfo &other) = default;
-		inline size_t size() const { return base->size(); }
+		TypeInfo(TypeDecl *type, bool isConst = false, bool isStatic = false, size_t ptrCount = 0);
+		TypeInfo(const TypeInfo &other) = default;
+		TypeInfo& operator=(const TypeInfo &other) = default;
+		size_t size() const;
 
 		std::string signature() const;
 		bool operator==(const TypeInfo &other) const;

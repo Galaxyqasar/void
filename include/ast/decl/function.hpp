@@ -3,6 +3,8 @@
 #include "../node.hpp"
 #include "../stmt/compound.hpp"
 
+#include <optional>
+
 namespace voidcore {
 	class ParamDecl : public Decl {
 	public:
@@ -11,7 +13,7 @@ namespace voidcore {
 		void dump(std::ostream &out, uint32_t offset = 0) const;
 		std::string name() const;
 		std::string signature() const;
-		bool generatesAssembly() const;
+		bool isInline() const;
 
 	private:
 		friend class FunctionDecl;
@@ -30,7 +32,7 @@ namespace voidcore {
 		void dump(std::ostream &out, uint32_t offset = 0) const;
 		std::string name() const;
 		std::string signature() const;
-		bool generatesAssembly() const;
+		bool isInline() const;
 
 		inline TypeInfo getReturnType() { return returnType; }
 		inline Label* getAddr() { return &addr; }

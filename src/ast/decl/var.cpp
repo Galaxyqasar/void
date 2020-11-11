@@ -44,7 +44,7 @@ namespace voidcore {
 		return type.signature() + " " + m_name;
 	}
 
-	bool VarDecl::generatesAssembly() const {
-		return true;
+	bool VarDecl::isInline() const {
+		return false;
 	}
 }

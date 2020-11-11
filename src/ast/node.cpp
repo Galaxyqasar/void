@@ -1,7 +1,17 @@
 #include "node.hpp"
 
+#include "decl/type.hpp"
+
 namespace voidcore {
 	Node::~Node() {}
+
+
+	TypeInfo::TypeInfo(TypeDecl *type, bool isConst, bool isStatic, size_t ptrCount)
+	: base(type), isConst(isConst), isStatic(isStatic), ptrCount(ptrCount) {}
+
+	size_t TypeInfo::size() const {
+		return base->size();
+	}
 
 	std::string TypeInfo::signature() const {
 		std::string result;

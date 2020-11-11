@@ -13,7 +13,7 @@ namespace voidcore {
 		for(const Stmt *stmt : children) {
 			if(stmt->isInstanceOf<Decl>()) {
 				const Decl *decl = dynamic_cast<const Decl*>(stmt);
-				buildDecls |= decl->generatesAssembly();
+				buildDecls |= !decl->isInline();
 			}
 		}
 		if(buildDecls) {
@@ -21,7 +21,7 @@ namespace voidcore {
 			out->jmp(&declEnd);
 			for(Stmt *stmt : children) {
 				Decl *decl = dynamic_cast<Decl*>(stmt);
-				if(decl && decl->generatesAssembly()) {
+				if(decl && !decl->isInline()) {
 					stmt->build(out);
 				}
 			}

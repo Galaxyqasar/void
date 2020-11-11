@@ -2,6 +2,7 @@
 
 #include "ast/node.hpp"
 #include "parser/module.hpp"
+#include "ast/decl/type.hpp"
 
 namespace voidcore {
 	namespace stdint {
@@ -10,7 +11,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -19,7 +20,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -28,7 +29,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -37,7 +38,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -46,7 +47,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -55,7 +56,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -64,7 +65,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 
@@ -73,7 +74,7 @@ namespace voidcore {
 			void build(Assembler *out);
 			std::string name() const;
 			std::string signature() const;
-			bool generatesAssembly() const;
+			bool isInline() const;
 			size_t size() const;
 		};
 

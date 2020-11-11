@@ -19,7 +19,7 @@ namespace voidcore {
 		return "void";
 	}
 
-	bool VoidTypeDecl::generatesAssembly() const {
-		return false;
+	bool VoidTypeDecl::isInline() const {
+		return true;
 	}
 }

@@ -31,7 +31,7 @@ namespace voidcore {
 		return result.str();
 	}
 
-	bool ParamDecl::generatesAssembly() const {
+	bool ParamDecl::isInline() const {
 		return false;
 	}
 
@@ -86,7 +86,7 @@ namespace voidcore {
 		return result;
 	}
 
-	bool FunctionDecl::generatesAssembly() const {
-		return true;
+	bool FunctionDecl::isInline() const {
+		return false;
 	}
 }

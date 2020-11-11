@@ -15,7 +15,7 @@ namespace voidcore {
 		void dump(std::ostream &out, uint32_t offset = 0) const;
 		std::string name() const;
 		std::string signature() const;
-		bool generatesAssembly() const;
+		bool isInline() const;
 
 		inline TypeInfo getType() const { return type; }
 		inline size_t size() const { return type.size(); }

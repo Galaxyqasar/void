@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ast/node.hpp"
+#include "ast/decl/type.hpp"
 
 namespace voidcore {
 	class VoidTypeDecl : public TypeDecl {
@@ -9,7 +10,7 @@ namespace voidcore {
 		void build(Assembler *out);
 		std::string name() const;
 		std::string signature() const;
-		bool generatesAssembly() const;
+		bool isInline() const;
 		size_t size() const;
 	};
 }

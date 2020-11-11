@@ -21,7 +21,7 @@ class testDecl : public Decl {
 	void build(Assembler *out) {}
 	std::string name() const { return ""; }
 	std::string signature() const { return ""; }
-	bool generatesAssembly() const { return false; }
+	bool isInline() const { return true; }
 };
 class testStmt2 : public testStmt {};
 class testExpr2 : public testExpr {};
